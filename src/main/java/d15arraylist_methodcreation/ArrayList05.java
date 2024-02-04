@@ -30,6 +30,9 @@ public class ArrayList05 {
         System.out.println("--------------------------------");
 
 
+        System.out.println("Geldi mi.....?");
+
+
 
 
 
