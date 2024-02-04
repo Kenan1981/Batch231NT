@@ -26,6 +26,9 @@ public class ArrayList05 {
         nums.sort(null);
         System.out.println(nums);//[10, 12, 19, 23]
 
+        System.out.println("--------------------------------");
+
+
 
 
 
