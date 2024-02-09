@@ -1,9 +1,28 @@
 package d19stringbuilder_buffer_accessmodifier_static;
 
+import java.time.LocalDate;
+
 public class StaticBlock {
 
     //Bir variable olusturup deger atamazsaniz o variable’i initialize etmediniz demektir
     static double pi;
+    //Senaryo: Subat ayinda fiyatlarda indirim olacak. Class cagirildiginda otomatik price’i alacak
+    // ve class’in heryerinde bu degeri kullanacak
+    static int price;
+
+    static {
+        System.out.println("Static Block 2");
+        LocalDate currentDate=LocalDate.now();
+
+        if (currentDate.getMonthValue()==2) {//Alınan ayın tarihin ayını kontrol eder
+            price=1000;
+            System.out.println(price);
+        }else {
+            price=2000;
+            System.out.println(price);
+        }
+    }
+
     static {//static blok
         pi=3.14;
         System.out.println("Static block 1");
