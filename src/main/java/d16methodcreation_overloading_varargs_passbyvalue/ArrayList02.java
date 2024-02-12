@@ -13,7 +13,7 @@ public class ArrayList02 {
         System.out.println(myList);//[1,3,4,9,7]
         //asList kullanmanın bazı handikapları vardır.Arka planda Array gibi çalışır.Bu şekilde list oluşturusanız, listin eleman değiştiren methodları kullanılamaz.
 
-        // myList.remove(0);   //hata veriri. eleman sayısını değiştiremezsiniz.
+        // myList.remove(0);   //hata verir. eleman sayısını değiştiremezsiniz.
 
         // myList.add(5);//Hata
 
