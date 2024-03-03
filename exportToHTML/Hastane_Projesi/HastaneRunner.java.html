@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>HastaneRunner.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+HastaneRunner.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">Hastane_Projesi</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.*;</span>
+
+<span class="s0">import static </span><span class="s1">Hastane_Projesi</span><span class="s2">.</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">doktorIsimleri</span><span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">Hastane_Projesi</span><span class="s2">.</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">doktorSoyIsimleri</span><span class="s2">;</span>
+
+
+<span class="s0">public class </span><span class="s1">HastaneRunner </span><span class="s2">{</span>
+
+    <span class="s0">private static </span><span class="s1">Hastane hastane1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Hastane</span><span class="s2">();</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+
+        <span class="s1">String hastalik</span><span class="s2">=</span><span class="s3">&quot;Migren&quot;</span><span class="s2">;</span>
+
+        <span class="s1">String unvan </span><span class="s2">= </span><span class="s1">doktorUnvan</span><span class="s2">(</span><span class="s1">hastalik</span><span class="s2">);</span>
+        <span class="s1">Doktor doktor </span><span class="s2">= </span><span class="s1">doktorBul</span><span class="s2">(</span><span class="s1">unvan</span><span class="s2">);</span>
+
+        <span class="s1">Hasta hasta </span><span class="s2">= </span><span class="s1">hastaBul</span><span class="s2">(</span><span class="s1">hastalik</span><span class="s2">);</span>
+
+         <span class="s1">hastane1</span><span class="s2">.</span><span class="s1">setDoktor</span><span class="s2">(</span><span class="s1">doktor</span><span class="s2">);</span>
+        <span class="s1">hastane1</span><span class="s2">.</span><span class="s1">setHasta</span><span class="s2">(</span><span class="s1">hasta</span><span class="s2">);</span>
+
+        <span class="s1">String durumYazdir </span><span class="s2">= </span><span class="s1">hasta</span><span class="s2">.</span><span class="s1">getHastaDurumu</span><span class="s2">() != </span><span class="s0">null </span><span class="s2">? </span><span class="s1">hasta</span><span class="s2">.</span><span class="s1">getHastaDurumu</span><span class="s2">().</span><span class="s1">getAktuelDurum</span><span class="s2">() : </span><span class="s3">&quot;Bilgi yok&quot;</span><span class="s2">;</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Atanan Doktor: &quot; </span><span class="s2">+ </span><span class="s1">doktor</span><span class="s2">.</span><span class="s1">getDoktorIsim</span><span class="s2">() +</span><span class="s3">&quot; &quot;</span><span class="s2">+ </span><span class="s1">doktor</span><span class="s2">.</span><span class="s1">getDoktorSoyIsim</span><span class="s2">()+</span><span class="s3">&quot;, Unvan: &quot; </span><span class="s2">+ </span><span class="s1">doktor</span><span class="s2">.</span><span class="s1">getUnvan</span><span class="s2">());</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Hasta: &quot; </span><span class="s2">+ </span><span class="s1">hasta</span><span class="s2">.</span><span class="s1">getHastaIsim</span><span class="s2">() + </span><span class="s3">&quot; &quot; </span><span class="s2">+ </span><span class="s1">hasta</span><span class="s2">.</span><span class="s1">getHastaSoyIsim</span><span class="s2">() + </span><span class="s3">&quot;, Durumu: &quot; </span><span class="s2">+ </span><span class="s1">durumYazdir</span><span class="s2">);</span>
+
+    <span class="s2">}</span>
+
+    <span class="s0">public static </span><span class="s1">String doktorUnvan</span><span class="s2">(</span><span class="s1">String hastaDurumu</span><span class="s2">) {</span>
+        <span class="s0">switch </span><span class="s2">(</span><span class="s1">hastaDurumu</span><span class="s2">.</span><span class="s1">toLowerCase</span><span class="s2">()) {</span>
+            <span class="s0">case </span><span class="s3">&quot;allerji&quot;</span><span class="s2">:</span>
+                <span class="s0">return </span><span class="s3">&quot;Allergist&quot;</span><span class="s2">;</span>
+            <span class="s0">case </span><span class="s3">&quot;baş ağrısı&quot;</span><span class="s2">:</span>
+                <span class="s0">return </span><span class="s3">&quot;Norolog&quot;</span><span class="s2">;</span>
+            <span class="s0">case </span><span class="s3">&quot;diabet&quot;</span><span class="s2">:</span>
+                <span class="s0">return </span><span class="s3">&quot;Dahiliye&quot;</span><span class="s2">;</span>
+
+            <span class="s0">default</span><span class="s2">:</span>
+                <span class="s0">return </span><span class="s3">&quot;Pratisyen&quot;</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+    <span class="s0">public static </span><span class="s1">Doktor doktorBul</span><span class="s2">(</span><span class="s1">String unvan</span><span class="s2">) {</span>
+        <span class="s1">Doktor doktor </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Doktor</span><span class="s2">();</span>
+
+        <span class="s0">int </span><span class="s1">rastgeleDoktor </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">().</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">doktorIsimleri</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);</span>
+
+        <span class="s1">doktor</span><span class="s2">.</span><span class="s1">setDoktorIsim</span><span class="s2">(</span><span class="s1">doktorIsimleri</span><span class="s2">[</span><span class="s1">rastgeleDoktor</span><span class="s2">]);</span>
+        <span class="s1">doktor</span><span class="s2">.</span><span class="s1">setDoktorSoyIsim</span><span class="s2">(</span><span class="s1">doktorSoyIsimleri</span><span class="s2">[</span><span class="s1">rastgeleDoktor</span><span class="s2">]);</span>
+        <span class="s1">doktor</span><span class="s2">.</span><span class="s1">setUnvan</span><span class="s2">(</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">unvanlar</span><span class="s2">[</span><span class="s1">rastgeleDoktor</span><span class="s2">]);</span>
+        <span class="s0">return </span><span class="s1">doktor</span><span class="s2">;</span>
+    <span class="s2">}</span>
+    <span class="s0">public static </span><span class="s1">Hasta hastaBul</span><span class="s2">(</span><span class="s1">String hastaDurumu</span><span class="s2">) {</span>
+        <span class="s1">Hasta hasta </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Hasta</span><span class="s2">();</span>
+
+        <span class="s0">int </span><span class="s1">rastgeleHasta </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">().</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">hastaIsimleri</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">rastgeleHastaSoyadi</span><span class="s2">=</span><span class="s0">new </span><span class="s1">Random</span><span class="s2">().</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">hastaSoyIsimleri</span><span class="s2">.</span><span class="s1">length</span><span class="s2">);</span>
+
+
+        <span class="s1">hasta</span><span class="s2">.</span><span class="s1">setHastaIsim</span><span class="s2">(</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">hastaIsimleri</span><span class="s2">[</span><span class="s1">rastgeleHasta</span><span class="s2">]);</span>
+        <span class="s1">hasta</span><span class="s2">.</span><span class="s1">setHastaSoyIsim</span><span class="s2">(</span><span class="s1">VeriBankasi</span><span class="s2">.</span><span class="s1">hastaSoyIsimleri</span><span class="s2">[</span><span class="s1">rastgeleHastaSoyadi</span><span class="s2">]);</span>
+        <span class="s1">hasta</span><span class="s2">.</span><span class="s1">setHastaID</span><span class="s2">(</span><span class="s4">123</span><span class="s2">);</span>
+
+        <span class="s1">Durum durum </span><span class="s2">= </span><span class="s1">hastaDurumuBul</span><span class="s2">(</span><span class="s1">hastaDurumu</span><span class="s2">);</span>
+        <span class="s1">hasta</span><span class="s2">.</span><span class="s1">setHastaDurumu</span><span class="s2">(</span><span class="s1">durum</span><span class="s2">);</span>
+        <span class="s0">return </span><span class="s1">hasta</span><span class="s2">;</span>
+    <span class="s2">}</span>
+    <span class="s0">public static </span><span class="s1">Durum hastaDurumuBul</span><span class="s2">(</span><span class="s1">String aktuelDurum</span><span class="s2">) {</span>
+        <span class="s1">Durum durum </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Durum</span><span class="s2">();</span>
+        <span class="s1">durum</span><span class="s2">.</span><span class="s1">setAktuelDurum</span><span class="s2">(</span><span class="s1">aktuelDurum</span><span class="s2">);</span>
+
+        <span class="s0">switch </span><span class="s2">(</span><span class="s1">aktuelDurum</span><span class="s2">) {</span>
+            <span class="s0">case </span><span class="s3">&quot;Allerji&quot;</span><span class="s2">:</span>
+            <span class="s0">case </span><span class="s3">&quot;Baş ağrısı&quot;</span><span class="s2">:</span>
+            <span class="s0">case </span><span class="s3">&quot;Diabet&quot;</span><span class="s2">:</span>
+            <span class="s0">case </span><span class="s3">&quot;Soğuk algınlığı&quot;</span><span class="s2">:</span>
+                <span class="s1">durum</span><span class="s2">.</span><span class="s1">setAciliyet</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+                <span class="s0">break</span><span class="s2">;</span>
+            <span class="s0">case </span><span class="s3">&quot;Migren&quot;</span><span class="s2">:</span>
+            <span class="s0">case </span><span class="s3">&quot;Kalp hastalıkları&quot;</span><span class="s2">:</span>
+                <span class="s1">durum</span><span class="s2">.</span><span class="s1">setAciliyet</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+                <span class="s0">break</span><span class="s2">;</span>
+            <span class="s0">default</span><span class="s2">:</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Geçerli bir durum değil&quot;</span><span class="s2">);</span>
+                <span class="s0">break</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">return </span><span class="s1">durum</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

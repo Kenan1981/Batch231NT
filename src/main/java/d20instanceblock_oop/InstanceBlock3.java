@@ -25,4 +25,5 @@ public class InstanceBlock3 {
         this.color = color;
         this.fuelType = fuelType;
     }
+
 }

@@ -1,5 +1,9 @@
 package Hastane_Projesi;
 
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Hastane extends VeriBankasi {
     private Doktor doktor;
     private Hasta hasta;
@@ -19,5 +23,7 @@ public class Hastane extends VeriBankasi {
     public void setHasta(Hasta hasta) {
         this.hasta = hasta;
     }
+
+
 }
 

@@ -1,26 +1,25 @@
 package Hastane_Projesi;
 
-public class Hasta extends Hastane{
-    private String isim;
-    private String soyIsim;
+public class Hasta {
+    private String hastaIsim;
+    private String hastaSoyIsim;
     private int hastaID;
     private Durum hastaDurumu;
 
-    // Getter ve Setter Metodları
-    public String getIsim() {
-        return isim;
+    public String getHastaIsim() {
+        return hastaIsim;
     }
 
-    public void setIsim(String isim) {
-        this.isim = isim;
+    public void setHastaIsim(String hastaIsim) {
+        this.hastaIsim = hastaIsim;
     }
 
-    public String getSoyIsim() {
-        return soyIsim;
+    public String getHastaSoyIsim() {
+        return hastaSoyIsim;
     }
 
-    public void setSoyIsim(String soyIsim) {
-        this.soyIsim = soyIsim;
+    public void setHastaSoyIsim(String hastaSoyIsim) {
+        this.hastaSoyIsim = hastaSoyIsim;
     }
 
     public int getHastaID() {

@@ -1,26 +1,26 @@
 package Hastane_Projesi;
 
-import java.util.Random;
 
-public class Doktor extends Hastane {
-    private String isimDoktor;
-    private String soyIsimDoktor;
+
+public class Doktor  {
+    private String doktorIsim;
+    private String doktorSoyIsim;
     private String unvan;
 
-    public String getIsimDoktor() {
-        return isimDoktor;
+    public String getDoktorIsim() {
+        return doktorIsim;
     }
 
-    public void setIsimDoktor(String isimDoktor) {
-        this.isimDoktor = isimDoktor;
+    public void setDoktorIsim(String doktorIsim) {
+        this.doktorIsim = doktorIsim;
     }
 
-    public String getSoyIsimDoktor() {
-        return soyIsimDoktor;
+    public String getDoktorSoyIsim() {
+        return doktorSoyIsim;
     }
 
-    public void setSoyIsimDoktor(String soyIsimDoktor) {
-        this.soyIsimDoktor = soyIsimDoktor;
+    public void setDoktorSoyIsim(String doktorSoyIsim) {
+        this.doktorSoyIsim = doktorSoyIsim;
     }
 
     public String getUnvan() {
@@ -30,9 +30,4 @@ public class Doktor extends Hastane {
     public void setUnvan(String unvan) {
         this.unvan = unvan;
     }
-
-
-
-
-
 }
