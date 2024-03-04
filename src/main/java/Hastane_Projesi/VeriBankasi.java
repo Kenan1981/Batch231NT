@@ -10,6 +10,7 @@ public class VeriBankasi {
     public static String[] hastaSoyIsimleri = {"Traven", "William", "George", "Tristan", "Luis", "Cole"};
     public static String[] durumlar = {"Allerji", "Baş ağrısı", "Diabet", "Soğuk algınlığı", "Migren", "Kalp hastalıkları"};
     public static int[] hastaIDleri = {111, 222, 333, 444, 555, 666};
+    public static int [] muayeneHaneNo={101,102,103,201,202,203};
 
 
 

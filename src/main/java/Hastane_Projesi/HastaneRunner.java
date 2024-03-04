@@ -4,98 +4,156 @@ import java.util.*;
 
 import static Hastane_Projesi.VeriBankasi.*;
 
-
 public class HastaneRunner {
 
-    private static Hastane hastane1 = new Hastane();
+    private static final Hastane hastane1 = new Hastane();
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         hosgeldiniz();
-        String hastalik="Migren";
 
-        String unvan = doktorUnvan(hastalik);
-        Doktor doktor = doktorBul(unvan);
+        System.out.println("         HASTA GİRİŞ EKRANI");
+        System.out.println("Lütfen Adınızı Giriniz");
+        String hastaName = input.nextLine();
+        System.out.println("Lütfen Soyadınız Giriniz");
+        String surName= input.nextLine();
 
-        Hasta hasta = hastaBul(hastalik);
+        System.out.println("Lütfen Bir Hastalik Numarasi Seçiniz");
+        System.out.println("1-Allerji\n2-Baş ağrısı\n3-Diabet\n4-Soğuk algınlığı\n5-Migren\n6-Kalp hastalıkları");
+        int hastalikNo = input.nextInt();
 
-         hastane1.getDoktor();
-         hastane1.getHasta();
 
-
-        String durumYazdir = hasta.getHastaDurumu() != null ? hasta.getHastaDurumu().getAktuelDurum() : "Bilgi yok";
-
-        System.out.println("Atanan Doktor: " + doktor.getDoktorIsim() +" "+ doktor.getDoktorSoyIsim()+", Unvan: " + doktor.getUnvan());
-        System.out.println("Hasta: " + hasta.getHastaIsim() + " " + hasta.getHastaSoyIsim() +",Bekleme Sırasi "+hasta.getHastaID()+", Durumu: " + durumYazdir);
-        System.out.println("Acil Şifalar Dileriz");
-        System.out.println("*".repeat(58));
+        System.out.println("       ***HASTA KARTI***");
+        System.out.println("Hasta Bilgileri :" + hastaName+" "+surName);
+        System.out.println("Birim :");
+        poliklinikBul(hastalikNo);
+        System.out.println("Doktor :");
+        doktorBul(hastalikNo);
+        System.out.println("Muayene Oda No: ");
+        muayeneOdasi(hastalikNo);
+        System.out.println("Acil Durum:");
+        hastaDurumuBul(hastalikNo);
+        idAta(hastalikNo);
+        System.err.println("Acil Şifalar Dileriz");
 
     }
-    public static void hosgeldiniz(){
+    public static void hosgeldiniz() {
 
-        System.out.println("---------------HASTANEMİZE HOŞGELDİNİZ----------------");
-        System.out.println("*".repeat(58));
+        System.out.println("*************** <HASTANEMİZE HOŞGELDİNİZ>*******");
+
     }
 
-    public static String doktorUnvan(String hastaDurumu) {
-        switch (hastaDurumu) {
-            case "allerji":
-                return "Allergist";
-            case "baş ağrısı":
-                return "Norolog";
-            case "diabet":
-                return "Dahiliye";
-
-            default:
-                return "Pratisyen";
+    public static Hastane poliklinikBul(int unvan) {
+        Hastane doktor = new Hastane();
+        switch (unvan) {
+            case 1:
+                System.out.println("Allerjist");
+                break;
+            case 2:
+                System.out.println("Çocuk Doktoru");
+                break;
+            case 3:
+                System.out.println("Dahiliye");
+                break;
+            case 4:
+                System.out.println("Genel Cerrah");
+                break;
+            case 5:
+                System.out.println("Norolog");
+                break;
+            case 6:
+                System.out.println("Kardiolog");
+                break;
         }
-    }
-    public static Doktor doktorBul(String unvan) {
-        Doktor doktor = new Doktor();
 
-        int rastgeleDoktor = new Random().nextInt(doktorIsimleri.length);
-
-        doktor.setDoktorIsim(doktorIsimleri[rastgeleDoktor]);
-        doktor.setDoktorSoyIsim(doktorSoyIsimleri[rastgeleDoktor]);
-        doktor.setUnvan(VeriBankasi.unvanlar[rastgeleDoktor]);
         return doktor;
     }
-    public static Hasta hastaBul(String hastaDurumu) {
-        Hasta hasta = new Hasta();
 
-        int rastgeleHastaAdi=new Random().nextInt(hastaIsimleri.length);
-        int rastgeleHastaSoyadi=new Random().nextInt(VeriBankasi.hastaSoyIsimleri.length);
-        int rastgeleId=new Random().nextInt(VeriBankasi.hastaIDleri.length);
-
-
-        hasta.setHastaIsim(VeriBankasi.hastaIsimleri[rastgeleHastaAdi]);
-        hasta.setHastaSoyIsim(VeriBankasi.hastaSoyIsimleri[rastgeleHastaSoyadi]);
-        hasta.setHastaID(VeriBankasi.hastaIDleri[rastgeleId]);
-
-        Durum durum = hastaDurumuBul(hastaDurumu);
-        hasta.setHastaDurumu(durum);
-        return hasta;
-    }
-    public static Durum hastaDurumuBul(String aktuelDurum) {
+    public static Durum hastaDurumuBul(int hastalikNo) {
         Durum durum = new Durum();
-        durum.setAktuelDurum(aktuelDurum);
 
-        switch (aktuelDurum) {
-            case "Allerji":
-            case "Baş ağrısı":
-            case "Diabet":
-            case "Soğuk algınlığı":
-                durum.setAciliyet(false);
+        switch (hastalikNo) {
+            case 1:
+                System.out.println(durum.isAciliyet());
                 break;
-            case "Migren":
-            case "Kalp hastalıkları":
-                durum.setAciliyet(true);
+            case 2:
+                System.out.println(durum.isAciliyet());
+                break;
+            case 3:
+                System.out.println(durum.isAciliyet());
+                break;
+            case 4:
+                System.out.println(durum.isAciliyet());
+                break;
+            case 5:
+                System.out.println(durum.isAciliyet());
+                break;
+            case 6:
+                System.out.println("Acil Durum");
                 break;
             default:
-                System.out.println("Acil bir durum değil");
-                break;
         }
         return durum;
     }
 
+    public static Doktor doktorBul(int hastalikNo) {
+        Doktor doktor = new Doktor();
+        if (hastalikNo == 1) {
+            System.out.println(doktorIsimleri[0]);
+            System.out.println(doktorSoyIsimleri[0]);
+        } else if (hastalikNo == 2) {
+            System.out.println(doktorIsimleri[1]);
+            System.out.println(doktorSoyIsimleri[1]);
+        } else if (hastalikNo == 3) {
+            System.out.println(doktorIsimleri[2]);
+            System.out.println(doktorSoyIsimleri[2]);
+        } else if (hastalikNo == 4) {
+            System.out.println(doktorIsimleri[3]);
+            System.out.println(doktorSoyIsimleri[3]);
+        } else if (hastalikNo == 5) {
+            System.out.println(doktorIsimleri[4]);
+            System.out.println(doktorSoyIsimleri[4]);
+        } else if (hastalikNo == 6) {
+            System.out.println(doktorIsimleri[5]);
+            System.out.println(doktorSoyIsimleri[5]);
+        } else {
+            System.out.println("Doktor Bulunamadi");
+        }
+        return doktor;
+    }
+
+    public static void idAta(int hastalikNo) {
+        Random rand = new Random();
+        int uzunluk = VeriBankasi.hastaIDleri.length;
+        int rastgeleIndex = rand.nextInt(uzunluk);
+        int secilenHastaID = VeriBankasi.hastaIDleri[rastgeleIndex];
+        System.out.println("Bekleme Sırası : "+ secilenHastaID);
+    }
+
+    public static void muayeneOdasi(int hastaNo){
+        VeriBankasi pol=new VeriBankasi();
+        switch (hastaNo){
+            case 1:
+                System.out.println(muayeneHaneNo[0]);
+                break;
+            case 2:
+                System.out.println(muayeneHaneNo[1]);
+                break;
+            case 3:
+                System.out.println(muayeneHaneNo[2]);
+                break;
+            case 4:
+                System.out.println(muayeneHaneNo[3]);
+                break;
+            case 5:
+                System.out.println(muayeneHaneNo[4]);
+                break;
+            case 6:
+                System.out.println(muayeneHaneNo[5]);
+                break;
+            default:
+        }
+
+    }
 
 }

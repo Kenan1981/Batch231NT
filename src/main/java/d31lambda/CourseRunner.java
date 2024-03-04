@@ -68,9 +68,11 @@ public class CourseRunner {
 
         System.out.println("----------");
 
-       Course result7=courseList.stream().sorted(Comparator.comparing(Course::getAverageScore)).reduce((t,u)->u).get();
-        System.out.println(result7);
+        Course result7=courseList.stream().sorted(Comparator.comparing(Course::getAverageScore)).reduce((t,u)->u).get();
+        System.out.println(result7);//Course{season='Winter', courseName='Turkish Night', averageScore=98, numberOfStudents=154}
 
+        Course result8=courseList.stream().sorted(Comparator.comparing(Course::getAverageScore).reversed()).findFirst().get();
+        System.out.println(result8);//Course{season='Winter', courseName='Turkish Night', averageScore=98, numberOfStudents=154}
 
 
 
