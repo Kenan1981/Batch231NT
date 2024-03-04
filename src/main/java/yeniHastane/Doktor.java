@@ -1,6 +1,8 @@
 package yeniHastane;
 
-public class Doktor {
+import Hastane_Projesi.Hastane;
+
+public class Doktor extends Hastane {
 
 	private String isim;
 	private String soyIsim;

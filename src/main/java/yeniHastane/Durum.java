@@ -1,6 +1,6 @@
 package yeniHastane;
 
-public class Durum {
+public class Durum extends Hasta{
 
 	private String actuelDurum;
 	private boolean aciliyet;
