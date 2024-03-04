@@ -1,59 +1,83 @@
 package yeniHastane;
+
+import java.util.Scanner;
+
 public class HastaneRunner {
     private static Hastane hastane = new Hastane();
-
     public static void main(String[] args) {
-        
-        String hastaDurumu = "Bas agrisi";
 
-        String unvan  = doktorUnvan(hastaDurumu);
-        
-        hastane.setDoktor(doktorBul(unvan));
-        hastane.setHasta(hastaBul(hastaDurumu));
+        Scanner input=new Scanner(System.in);
+        boolean hastaControl=true;
+        int counter;
 
-        Durum hastaAciliyet=hastaDurumBul(hastaDurumu);
+        do {
+            System.out.println("Lütfen Rahatsızlığınızı giriniz");
+            String hastaDurumu =input.nextLine().trim();
 
-        System.out.println("******************** HASTA KARTI ***");
+            String unvan = doktorUnvan(hastaDurumu);
 
-        System.out.println("*".repeat(40));
+            hastane.setDoktor(doktorBul(unvan));
+            hastane.setHasta(hastaBul(hastaDurumu));
 
-        System.out.println("Doktor ismi: "+hastane.getDoktor().getIsim());
-        System.out.println("Doktor soy isim: "+hastane.getDoktor().getSoyIsim());
-        System.out.println("Doktor unvani: "+hastane.getDoktor().getUnvan());
-        System.out.println("Hasta İsmi: "+hastane.getHasta().getIsim());
-        System.out.println("Hasta Soy İsmi: "+hastane.getHasta().getSoyIsim());
-        System.out.println("Hasta Durumu: "+hastaAciliyet.isAciliyet());
-        System.err.println("Geçmiş olsun dileklerimizle...");
+            Durum hastaAciliyet = hastaDurumBul(hastaDurumu);
 
-        System.out.println("*".repeat(40));
 
-    }
-    public static String doktorUnvan(String aktuelDurum) { 
-        
-        if(aktuelDurum.equals("Allerji")) {
+
+            System.out.println("******************** HASTA KARTI ***");
+
+            System.out.println("*".repeat(40));
+
+            System.out.println("Hasta İsmi: " + hastane.getHasta().getIsim());
+            System.out.println("Hasta Soy İsmi: " + hastane.getHasta().getSoyIsim());
+            System.out.println("Hasta Durumu: " + hastaAciliyet.isAciliyet());
+            System.out.println("Doktor ismi: " + hastane.getDoktor().getIsim());
+            System.out.println("Doktor soy isim: " + hastane.getDoktor().getSoyIsim());
+            System.out.println("Doktor unvani: " + hastane.getDoktor().getUnvan());
+
+            System.err.println("Geçmiş olsun dileklerimizle...");
+
+            System.out.println("*".repeat(40));
+
+            System.out.println("Çıkmak için 1'e,yeni bir giriş yapmak için 2'ye tuşlayınız");
+            counter=input.nextInt();
+            input.nextLine();
+            if (counter==1){
+                hastaControl=false;
+                System.out.println("Güle güle");
+            }else if (counter==2){
+                hastaControl=true;
+                System.out.println("Yeni Giriş");
+            }
+        }while (hastaControl);
+
+
+    }//Main Dışı
+    public static String doktorUnvan(String aktuelDurum) {
+
+        if(aktuelDurum.equalsIgnoreCase("Allerji")) {
             return hastane.unvanlar[0];
-        }else if(aktuelDurum.equals("Bas agrisi")) {
+        }else if(aktuelDurum.equalsIgnoreCase("Bas agrisi")) {
             return hastane.unvanlar[1];
-        }else if(aktuelDurum.equals("Diabet")) {
+        }else if(aktuelDurum.equalsIgnoreCase("Diabet")) {
             return hastane.unvanlar[2];
-        }else if(aktuelDurum.equals("Soguk alginligi")) {
+        }else if(aktuelDurum.equalsIgnoreCase("Soguk alginligi")) {
             return hastane.unvanlar[3];
-        }else if(aktuelDurum.equals("Migren")) {
+        }else if(aktuelDurum.equalsIgnoreCase("Migren")) {
             return hastane.unvanlar[4];
-        }else if (aktuelDurum.equals("Kalp hastaliklari")) {
+        }else if (aktuelDurum.equalsIgnoreCase("Kalp hastaliklari")) {
             return hastane.unvanlar[5];
         }
-        
-        return "yanlis durum";
-        
+
+        return "Geçerli bir durum değil";
+
     }
-    public static Doktor doktorBul(String unvan){ 
-        
+    public static Doktor doktorBul(String unvan){
+
         Doktor doktor = new Doktor();
-        
+
         for(int i = 0; i < hastane.unvanlar.length; i++ )
         {
-            if(unvan.equals(hastane.unvanlar[i])) {
+            if(unvan.equalsIgnoreCase(hastane.unvanlar[i])) {
                 doktor.setIsim(hastane.doctorIsimleri[i]);
                 doktor.setSoyIsim(hastane.doctorSoyIsimleri[i]);
                 doktor.setUnvan(unvan);
@@ -64,7 +88,7 @@ public class HastaneRunner {
     public static Hasta hastaBul(String hastaDurumu){
         Hasta hasta=new Hasta();
         for (int i = 0; i <hastane.durumlar.length ; i++) {
-            if (hastaDurumu.equals(hastane.durumlar[i])){
+            if (hastaDurumu.equalsIgnoreCase(hastane.durumlar[i])){
                 hasta.setIsim(hastane.hastaIsimleri[i]);
                 hasta.setSoyIsim(hastane.hastaSoyIsimleri[i]);
                 hasta.setHastaID(hastane.hastaIDleri[i]);
@@ -89,15 +113,16 @@ public class HastaneRunner {
             case  "Migren":
                 hastaDurum.setAciliyet(true);
                 break;
-            case  "Kalp hastalikalri":
+            case  "Kalp hastaliklari":
                 hastaDurum.setAciliyet(true);
                 break;
             default:
+                System.out.println("Geçerli bir durum değil");
 
                 break;
         }
         return hastaDurum;
 
     }
-    
+
 }
