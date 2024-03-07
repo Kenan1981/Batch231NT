@@ -8,6 +8,18 @@ public class Hasta extends Hastane {
 	private String soyIsim;
 	private int hastaID;
 	private Durum hastaDurumu;
+	private String isimSoyisimId;
+
+
+	public String getIsimSoyisimId() {
+		return isimSoyisimId;
+	}
+
+	public void setIsimSoyisimId(String isimSoyisimId) {
+		this.isimSoyisimId = isimSoyisimId;
+	}
+
+
 	
 	
 	public String getIsim() {

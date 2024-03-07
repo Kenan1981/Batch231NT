@@ -7,8 +7,16 @@ public class Doktor extends Hastane {
 	private String isim;
 	private String soyIsim;
 	private String unvan;
-	
-	
+	private String isimSoyadUnvan;
+
+	public String getIsimSoyadUnvan() {
+		return isimSoyadUnvan;
+	}
+
+	public void setIsimSoyadUnvan(String isimSoyadUnvan) {
+		this.isimSoyadUnvan = isimSoyadUnvan;
+	}
+
 	public String getIsim() {
 		return isim;
 	}

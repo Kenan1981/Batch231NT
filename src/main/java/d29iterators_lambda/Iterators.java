@@ -35,6 +35,7 @@ public class Iterators {
         //hasNext() : Koleksiyonun bir sonraki elemaninin olup olmadigini kontrol eder(boolean)
         //next() : Pointer'i bir sonraki elemanin onune konumlandirir ve pointer'in atladigi elemani verir
         //remove() : Pointer'in atladigi elemani siler
+
         Iterator<String> myItr = myList.iterator();//[Tom, Jim, Clara, Fatma, Mustafa]
 
         //**specific bir elemani iterator ile nasil silebiliriz? (Tom’u silelim)
@@ -77,7 +78,7 @@ public class Iterators {
         }
 //elemanlari sondan basa dogru yazdirin//hasPrevious
         while (listItr2.hasPrevious()){//önceki eleman varmı diye kontrol ettik
-            String el=listItr2.previous();//prev,ous pointeri sağdan sola alır
+            String el=listItr2.previous();//previous pointeri sağdan sola alır
             System.out.println(el+"<--");
             //       Aliye<--
             //       Can<--
