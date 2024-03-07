@@ -5,10 +5,18 @@ import java.util.List;
 import java.util.Scanner;
 
 import static yeniHastane.VeriBankasi.*;
+
 public class HastaneRunner {
     private static Hastane hastane = new Hastane();
 
     public static void main(String[] args) {
+
+        startHastane();
+
+    }//Main Dışı
+
+
+    public static void startHastane() {
 
         Scanner input = new Scanner(System.in);
         boolean hastaControl = true;
@@ -62,11 +70,7 @@ public class HastaneRunner {
                     break;
             }
         } while (hastaControl);
-
-
-
-    }//Main Dışı
-
+    }
 
     public static boolean durumGecerliMi(String hastaDurumu) {
 
