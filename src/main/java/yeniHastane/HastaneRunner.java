@@ -8,13 +8,15 @@ import static yeniHastane.VeriBankasi.*;
 
 public class HastaneRunner {
     private static Hastane hastane = new Hastane();
-
     public static void main(String[] args) {
 
         startHastane();
 
-    }//Main Dışı
 
+
+
+
+    }//Main Dışı
 
     public static void startHastane() {
 
@@ -61,13 +63,9 @@ public class HastaneRunner {
                     break;
                 case 2:
                     System.out.println("Yeni Giriş");
-
                     counter = 3;
                     break;
                 default:
-                    System.out.println("Geçersiz bir seçim yaptınız. Lütfen tekrar deneyin.");
-
-                    break;
             }
         } while (hastaControl);
     }
@@ -176,6 +174,5 @@ public class HastaneRunner {
         }
         return hasta;
     }
-
 
 }

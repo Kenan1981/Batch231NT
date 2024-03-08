@@ -9,14 +9,15 @@ public class Doktor extends Hastane {
 	private String unvan;
 	private String isimSoyadUnvan;
 
+
+
+
 	public String getIsimSoyadUnvan() {
 		return isimSoyadUnvan;
 	}
-
 	public void setIsimSoyadUnvan(String isimSoyadUnvan) {
 		this.isimSoyadUnvan = isimSoyadUnvan;
 	}
-
 	public String getIsim() {
 		return isim;
 	}
